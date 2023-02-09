@@ -12,7 +12,7 @@ import com.flavio.runningapp.models.Run
 interface RunDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(run: Run)
+    suspend fun upsertRun(run: Run)
 
     @Delete
     suspend fun deleteRun(run: Run)
@@ -33,14 +33,14 @@ interface RunDAO {
     fun getAllRunsSortedByCaloriesBurned(): LiveData<List<Run>>
 
     @Query("SELECT AVG(avgSpeedInKMH) FROM running_table")
-    fun getTotalAvgSpeed(): LiveData<List<Run>>
+    fun getTotalAvgSpeed(): LiveData<Float>
 
     @Query("SELECT SUM(distanceInMeters) FROM running_table")
-    fun getTotalDistance(): LiveData<List<Run>>
+    fun getTotalDistance(): LiveData<Int>
 
     @Query("SELECT SUM(timeInMillis) FROM running_table")
-    fun getTotalTimeInMillis(): LiveData<List<Run>>
+    fun getTotalTimeInMillis(): LiveData<Long>
 
     @Query("SELECT SUM(caloriesBurned) FROM running_table")
-    fun getTotalCaloriesBurned(): LiveData<List<Run>>
+    fun getTotalCaloriesBurned(): LiveData<Int>
 }
