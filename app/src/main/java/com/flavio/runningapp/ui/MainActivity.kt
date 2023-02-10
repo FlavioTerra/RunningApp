@@ -1,8 +1,8 @@
-package com.flavio.runningapp
+package com.flavio.runningapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.flavio.runningapp.R
 import com.flavio.runningapp.db.RunDAO
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("runDAO", "RUNDAO: ${runDAO.hashCode()}")
     }
 
 }
